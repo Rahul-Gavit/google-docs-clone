@@ -8,7 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerStatefulWidget {
@@ -30,26 +34,25 @@ class _MyAppState extends ConsumerState<MyApp> {
   void getUserData() async {
     errorModel = await ref.read(authRepositoryProvider).getUserData();
 
-    if(errorModel != null && errorModel!.data != null){
+    if (errorModel != null && errorModel!.data != null) {
       ref.read(userProvider.notifier).update((state) => errorModel!.data);
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Docs Clone',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
         final user = ref.watch(userProvider);
-        if(user!=null && user.token.isNotEmpty){
+        if (user != null && user.token.isNotEmpty) {
           return loggedInRoute;
         }
         return loggedOutRoute;
-
       }),
       routeInformationParser: const RoutemasterParser(),
     );

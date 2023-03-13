@@ -6,13 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
 class LoginScreen extends ConsumerWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   void signInWithGoogle(WidgetRef ref, BuildContext context) async {
     final sMessenger = ScaffoldMessenger.of(context);
     final navigator = Routemaster.of(context);
-    final errorModel =
-        await ref.read(authRepositoryProvider).signInWithGoogle();
+    final errorModel = await ref.read(authRepositoryProvider).signInWithGoogle();
     if (errorModel.error == null) {
       ref.read(userProvider.notifier).update((state) => errorModel.data);
       navigator.replace('/');
@@ -36,7 +35,7 @@ class LoginScreen extends ConsumerWidget {
             height: 20,
           ),
           label: const Text(
-            'Sign in with google',
+            'Sign in with Google',
             style: TextStyle(
               color: kBlackColor,
             ),
