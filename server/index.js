@@ -16,8 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(authRouter);
 app.use(documentRouter);
-const DB = "mongodb+srv://rahul:gSuBxXDCp17AQYbQ@cluster0.vadpkgw.mongodb.net/?retryWrites=true&w=majority";
 
+const DB = "Insert Your MongoDB Connection Link";
 
 
 mongoose

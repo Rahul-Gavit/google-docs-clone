@@ -1,2 +1,1 @@
 node_modules/
-const DB = "mongodb+srv://rahul:gSuBxXDCp17AQYbQ@cluster0.vadpkgw.mongodb.net/?retryWrites=true&w=majority";
